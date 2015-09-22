@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="ServerPermission_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ServerPermission" RelativeSize="100" Direction="Vertical">
+              <LayoutGroup Id="ServerPermission_col1" RelativeSize="87.761194029850742">
+                <LayoutItem Id="TargetType" ViewItem="TargetType" SizeConstraintsType="Default" Index="0" RelativeSize="10.884353741496598" />
+                <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="89.1156462585034" Direction="Horizontal">
+                  <LayoutItem Id="AllowView" ViewItem="AllowView" SizeConstraintsType="Default" Index="0" RelativeSize="23.519458544839257" />
+                  <LayoutItem Id="AllowAdd" ViewItem="AllowAdd" SizeConstraintsType="Default" Index="1" RelativeSize="22.504230118443317" />
+                  <LayoutItem Id="AllowEdit" ViewItem="AllowEdit" SizeConstraintsType="Default" Index="2" RelativeSize="22.504230118443317" />
+                  <LayoutItem Id="AllowDelete" ViewItem="AllowDelete" SizeConstraintsType="Default" Index="3" RelativeSize="27.749576988155667" />
+                </LayoutGroup>
+                <LayoutItem Id="AllowAdd" SizeConstraintsType="Default" RelativeSize="8.8235294117647065" Removed="True" />
+                <LayoutItem Id="AllowView" SizeConstraintsType="Default" RelativeSize="8.8235294117647065" Removed="True" />
+                <LayoutItem Id="TypeCaption" SizeConstraintsType="Default" RelativeSize="11.764705882352942" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="ServerPermission_col2" RelativeSize="47.717842323651453" Caption="ServerPermission_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="AllowDelete" Removed="True" />
+                <LayoutItem Id="AllowEdit" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

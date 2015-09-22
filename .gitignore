@@ -29,3 +29,5 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 .svn/
 builds/
+packages/Easy*
+packages/Rabbit*

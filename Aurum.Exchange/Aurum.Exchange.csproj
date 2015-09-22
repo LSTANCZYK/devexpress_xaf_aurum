@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DBEDF59D-092C-4381-A09C-67AF478C48DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Aurum.Exchange</RootNamespace>
+    <AssemblyName>Aurum.Exchange</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Debug\Aurum.Exchange.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.Validation.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Xpo.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.1.Core">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.Base.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.BaseImpl.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Spreadsheet.v14.1.Core, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraSpreadsheet.v14.1, Version=14.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessObjects\ExchangeTrail.cs" />
+    <Compile Include="Controllers\ExchangeParameters_DetailViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ExchangeParameters_DetailViewController.Designer.cs">
+      <DependentUpon>ExchangeParameters_DetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ExchangeWindowController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ExchangeWindowController.Designer.cs">
+      <DependentUpon>ExchangeWindowController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formatters\Input\Basic\InputDbfFormatter.cs" />
+    <Compile Include="Formatters\Input\Basic\InputExcelFormatter.cs" />
+    <Compile Include="Formatters\Input\Basic\InputFormatter.cs" />
+    <Compile Include="Formatters\Input\Basic\InputTextFormatter.cs" />
+    <Compile Include="Formatters\Output\Generic\OutputDbfFormatter.cs" />
+    <Compile Include="Formatters\Output\Basic\OutputFormatter.cs" />
+    <Compile Include="Formatters\Output\Generic\OutputExcelFormatter.cs" />
+    <Compile Include="Formatters\Output\Generic\OutputTextFormatter.cs" />
+    <Compile Include="Formatters\Output\Generic\OutputFormatter.cs" />
+    <Compile Include="General\ChunkLoader.cs" />
+    <Compile Include="General\EntityPath.cs" />
+    <Compile Include="General\ExchangeParameters.cs" />
+    <Compile Include="General\ExchangeTypeHelper.cs" />
+    <Compile Include="General\OperationManagerExtensions.cs" />
+    <Compile Include="General\ParametersTypeAttribute.cs" />
+    <Compile Include="General\SubExchangeAttribute.cs" />
+    <Compile Include="Lib\Dbf.cs" />
+    <Compile Include="Model\Generators\ModelExportGenerator.cs" />
+    <Compile Include="Model\IModelExport.cs" />
+    <Compile Include="Model\IModelExports.cs" />
+    <Compile Include="Model\IModelExchange.cs" />
+    <Compile Include="Model\IModelExchanges.cs" />
+    <Compile Include="Operations\Export\CustomExportOperation.cs" />
+    <Compile Include="Operations\Base\CompositeExchangeOperation.cs" />
+    <Compile Include="Operations\Base\ExchangeOperationBase.cs" />
+    <Compile Include="Operations\Export\SimpleExportOperation.cs" />
+    <Compile Include="Operations\ExchangeOperation.cs" />
+    <Compile Include="Formatters\FormatterBase.cs" />
+    <Compile Include="Formatters\Output\Basic\OutputTextFormatter.cs" />
+    <Compile Include="Module.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Module.Designer.cs">
+      <DependentUpon>Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Base\SingleExchangeOperation.cs" />
+    <Compile Include="Operations\Import\CustomImportOperation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controllers\ExchangeParameters_DetailViewController.resx">
+      <DependentUpon>ExchangeParameters_DetailViewController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ExchangeWindowController.resx">
+      <DependentUpon>ExchangeWindowController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module.resx">
+      <DependentUpon>Module.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aurum.Operations.Win\Aurum.Operations.Win.csproj">
+      <Project>{3398C46E-5CCA-4AD3-88AE-06AB7B30E859}</Project>
+      <Name>Aurum.Operations.Win</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aurum.Operations\Aurum.Operations.csproj">
+      <Project>{3309C790-27C0-4617-AA3C-853C9B511F6F}</Project>
+      <Name>Aurum.Operations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aurum.Security\Aurum.Security.csproj">
+      <Project>{279bd41d-0241-47c8-8c3c-2d77a029503f}</Project>
+      <Name>Aurum.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aurum.Xpo\Aurum.Xpo.csproj">
+      <Project>{84d72249-d18d-4115-ae3e-f0b2a2d7d6ce}</Project>
+      <Name>Aurum.Xpo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.Localization.ru.xafml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UnusableNodes_ru.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="PreviewReportV2" Caption="Просмотр" />
+      <Action Id="ReportViewerDialogControllerV2_Close" Caption="Закрыть" />
+      <Action Id="ResetViewSettings" Caption="Сброс настроек представления" />
+      <Action Id="ShowInReportV2" Caption="Показать в отчете" />
+    </Actions>
+  </ActionDesign>
+</Application>

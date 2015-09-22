@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel>
+    <Class Name="Aurum.Security.Contract" Caption="Договор">
+      <OwnMembers>
+        <Member Name="DateIn" Caption="Дата с" />
+        <Member Name="DateOut" Caption="Дата до" />
+        <Member Name="Grantee" Caption="Собственник данных, получающий права на доступ к данным" />
+        <Member Name="Grantor" Caption="Собственник данных, предоставляющий права на доступ к своим данным" />
+        <Member Name="Type" Caption="Тип договора, определяющий список разрешений на доступ к данным" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.ContractPermission" Caption="Разрешение по договору">
+      <OwnMembers>
+        <Member Name="AllowCreate" Caption="Создание" />
+        <Member Name="AllowDelete" Caption="Удаление" />
+        <Member Name="AllowRead" Caption="Чтение" />
+        <Member Name="AllowTransfer" Caption="Передача" />
+        <Member Name="AllowWrite" Caption="Запись" />
+        <Member Name="ContractType" Caption="Тип договора" />
+        <Member Name="TargetType" Caption="Тип объектов" />
+        <Member Name="TypeCaption" Caption="Описание типа объектов" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.ContractType" Caption="Тип договора">
+      <OwnMembers>
+        <Member Name="Code" Caption="Код" />
+        <Member Name="ObjectPermissions" Caption="Разрешения на доступ к данным" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabaseObject" Caption="Объект БД">
+      <OwnMembers>
+        <Member Name="Id" Caption="Идентификатор" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabaseObjectAssociation[Aurum.Security.DatabaseRole,Aurum.Security.DatabaseRole]">
+      <OwnMembers>
+        <Member Name="Key" Caption="Ключ" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabaseObjectAssociation[Aurum.Security.DatabaseUser,Aurum.Security.DatabaseRole]">
+      <OwnMembers>
+        <Member Name="Key" Caption="Ключ" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabasePrivilege" Caption="Привилегия БД">
+      <OwnMembers>
+        <Member Name="AllowDelete" Caption="Удаление" />
+        <Member Name="AllowInsert" Caption="Вставка" />
+        <Member Name="AllowSelect" Caption="Чтение" />
+        <Member Name="AllowUpdate" Caption="Обновление" />
+        <Member Name="Key" Caption="Ключ" />
+        <Member Name="Role" Caption="Роль" />
+        <Member Name="TargetType" Caption="Тип объектов" />
+        <Member Name="TypeCaption" Caption="Описание типа объектов" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabaseRole" Caption="Роль БД">
+      <OwnMembers>
+        <Member Name="ChildRoles" Caption="Дочерние роли" />
+        <Member Name="ParentRoles" Caption="Родительские роли" />
+        <Member Name="Privileges" Caption="Привилегии" />
+        <Member Name="Users" Caption="Пользователи" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabaseRoleRolesAssociation" Caption="Ассоциация иерархии ролей в базе данных">
+      <OwnMembers>
+        <Member Name="Child" Caption="Дочерняя роль" />
+        <Member Name="Parent" Caption="Родительская роль" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabaseUser" Caption="Пользователь">
+      <OwnMembers>
+        <Member Name="Created" Caption="Создан" />
+        <Member Name="IsActive" Caption="Активный" />
+        <Member Name="IsExpired" Caption="Истек пароль" />
+        <Member Name="Locked" Caption="Заблокирован" />
+        <Member Name="Roles" Caption="Роли" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabaseUserRolesAssociation">
+      <OwnMembers>
+        <Member Name="Role" Caption="Роль" />
+        <Member Name="User" Caption="Пользователь" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.OwnedUser" Caption="Пользователь собственника данных">
+      <OwnMembers>
+        <Member Name="Owner" Caption="Собственник данных" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.Owner" Caption="Собственник данных">
+      <OwnMembers>
+        <Member Name="Name" Caption="Название" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.ServerRole" Caption="Роль БД">
+      <OwnMembers>
+        <Member Name="Id" Caption="Идентификатор" />
+        <Member Name="Name" Caption="Название" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.ServerUser" Caption="Серверный пользователь">
+      <OwnMembers>
+        <Member Name="ChangePasswordOnFirstLogon" Caption="Сменить пароль при первом запуске" />
+        <Member Name="FirstName" Caption="Имя" />
+        <Member Name="Groups" Caption="Группы" />
+        <Member Name="Id" Caption="Идентификатор" />
+        <Member Name="LastName" Caption="Фамилия" />
+        <Member Name="MiddleName" Caption="Отчество" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.UserGroup" Caption="Группа пользователя">
+      <OwnMembers>
+        <Member Name="Name" Caption="Название" />
+        <Member Name="Users" Caption="Пользователи" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.XPOwnedObject" Caption="Базовый класс объекта с автогенерируемым идентификатором, принадлежащего собственнику данных, с поддержкой безопасности между собственниками данных" />
+    <Class Name="Aurum.Security.XPOwnedObjectBase" Caption="Базовый класс объекта с автогенерируемым идентификатором, принадлежащего собственнику данных">
+      <OwnMembers>
+        <Member Name="Owner" Caption="Собственник данных" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Xpo.XPObjectBase">
+      <OwnMembers>
+        <Member Name="Id" Caption="Идентификатор" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Xpo.XPObjectBase[System.String]">
+      <OwnMembers>
+        <Member Name="Id" Caption="Идентификатор" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.SystemModule.DashboardCreationInfo">
+      <OwnMembers>
+        <Member Name="DashboardName" Caption="Название" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Views>
+    <DetailView Id="Aurum_Contract_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Contract" Caption="Договор" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ContractPermission_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ContractPermission" Caption="Разрешение договора" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DatabasePrivilege_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="DatabasePrivilege" Caption="Привилегия" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="OwnedUser_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ServerUser" Caption="Пользователь" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ServerUser_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="ServerUser" Caption="Пользователь" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

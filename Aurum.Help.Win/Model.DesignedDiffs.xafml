@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="14.1.8.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="HelpDocument_DetailView" Caption="Справка" AllowEdit="False">
+      <Items>
+        <PropertyEditor Id="Text" PropertyEditorType="DevExpress.ExpressApp.HtmlPropertyEditor.Win.HtmlPropertyEditor" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SizeableEditors" TextAlignMode="AlignLocal" RelativeSize="100">
+            <LayoutItem Id="Text" ShowCaption="False" SizeConstraintsType="Default" RelativeSize="100" ViewItem="Text" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="HelpView_DetailView">
+      <Items>
+        <PropertyEditor Id="Text" PropertyEditorType="DevExpress.ExpressApp.HtmlPropertyEditor.Win.HtmlPropertyEditor" />
+      </Items>
+    </DetailView>
+    <DetailView Id="ProjectDocument_DetailView">
+      <Items>
+        <PropertyEditor Id="Text" PropertyEditorType="DevExpress.ExpressApp.HtmlPropertyEditor.Win.HtmlPropertyEditor" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="14.1.8.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="ReportStyle_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="79.427083333333329">
+            <LayoutGroup Id="ReportStyle" RelativeSize="55.409836065573771" Direction="Vertical">
+              <LayoutGroup Id="ReportStyle_col1" RelativeSize="100">
+                <LayoutItem Id="Landscape" SizeConstraintsType="Default" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="CaptionFont" SizeConstraintsType="Default" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="ParameterFont" SizeConstraintsType="Default" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="ColumnFont" ViewItem="ColumnFont" SizeConstraintsType="Default" Index="3" RelativeSize="17.647058823529413" IsNewNode="True" />
+                <LayoutItem Id="SummaryFont" ViewItem="SummaryFont" SizeConstraintsType="Default" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
+                <LayoutItem Id="PageMargins.Bottom" Removed="True" />
+                <LayoutItem Id="PageMargins.Left" Removed="True" />
+                <LayoutItem Id="PageMargins.Right" Removed="True" />
+                <LayoutItem Id="PageMargins.Top" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="ReportStyle_col2" RelativeSize="73.539518900343637" Caption="ReportStyle_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="ColumnFont" Removed="True" />
+                <LayoutItem Id="ColumnMargins.Bottom" Removed="True" />
+                <LayoutItem Id="ColumnMargins.Left" Removed="True" />
+                <LayoutItem Id="ColumnMargins.Right" Removed="True" />
+                <LayoutItem Id="ColumnMargins.Top" Removed="True" />
+                <LayoutItem Id="SummaryFont" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="21.311475409836067" Direction="Horizontal" Caption="PageMargins" IsNewNode="True">
+              <LayoutItem Id="PageMargins.Left" ViewItem="PageMargins.Left" SizeConstraintsType="Default" Index="0" RelativeSize="25.429553264604809" IsNewNode="True" />
+              <LayoutItem Id="PageMargins.Right" ViewItem="PageMargins.Right" SizeConstraintsType="Default" Index="1" RelativeSize="24.570446735395191" IsNewNode="True" />
+              <LayoutItem Id="PageMargins.Top" ViewItem="PageMargins.Top" SizeConstraintsType="Default" Index="2" RelativeSize="24.570446735395191" IsNewNode="True" />
+              <LayoutItem Id="PageMargins.Bottom" ViewItem="PageMargins.Bottom" SizeConstraintsType="Default" Index="3" RelativeSize="25.429553264604809" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="23.278688524590162" Caption="ColumnMargins" Direction="Horizontal" IsNewNode="True">
+              <LayoutItem Id="ColumnMargins.Left" ViewItem="ColumnMargins.Left" SizeConstraintsType="Default" Index="0" RelativeSize="25.429553264604809" IsNewNode="True" />
+              <LayoutItem Id="ColumnMargins.Right" ViewItem="ColumnMargins.Right" SizeConstraintsType="Default" Index="1" RelativeSize="24.570446735395191" IsNewNode="True" />
+              <LayoutItem Id="ColumnMargins.Top" ViewItem="ColumnMargins.Top" SizeConstraintsType="Default" Index="2" RelativeSize="24.570446735395191" IsNewNode="True" />
+              <LayoutItem Id="ColumnMargins.Bottom" ViewItem="ColumnMargins.Bottom" SizeConstraintsType="Default" Index="3" RelativeSize="25.429553264604809" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Groups_Group" Direction="Vertical" RelativeSize="20.572916666666668">
+            <LayoutItem Id="Groups" SizeConstraintsType="Default" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

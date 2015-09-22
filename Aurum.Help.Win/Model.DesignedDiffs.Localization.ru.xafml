@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application AboutInfoString="{0:ProductName}&lt;br&gt;{0:Version}&lt;br&gt;{0:Copyright}&lt;br&gt;{0:Description}">
+  <ActionDesign>
+    <Actions>
+      <Action Id="DescribeAction" Caption="Описать" ShortCaption="Describe" ToolTip="Describe" />
+      <Action Id="Diagnostic Info.Actions Info" Caption="Diagnostic Info.Actions Info" ShortCaption="Diagnostic Info.Actions Info" ToolTip="Diagnostic Info.Actions Info" />
+      <Action Id="Diagnostic Info.View Info" Caption="Diagnostic Info.View Info" ShortCaption="Diagnostic Info.View Info" ToolTip="Diagnostic Info.View Info" />
+      <Action Id="HelpWin" Caption="Справка" ShortCaption="Справка" ToolTip="Справка" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="Aurum.Help.HelpDocument" Caption="Справка">
+      <OwnMembers>
+        <Member Name="Text" Caption="Текст" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Help.HelpView" Caption="Описание представления">
+      <OwnMembers>
+        <Member Name="Text" Caption="Текст" />
+        <Member Name="ViewId" Caption="Идентификатор представления" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Help.Project" Caption="Проект">
+      <OwnMembers>
+        <Member Name="Documents" Caption="Документы" />
+        <Member Name="Name" Caption="Название" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Help.ProjectDocument" Caption="Документ проекта">
+      <OwnMembers>
+        <Member Name="Childs" Caption="Дочерние записи" />
+        <Member Name="Name" Caption="Название" />
+        <Member Name="Parent" Caption="Родитель" />
+        <Member Name="Project" Caption="Проект" />
+        <Member Name="Text" Caption="Текст" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.SystemModule.AboutInfo" ObjectCaptionFormat="{0:ProductName}">
+      <OwnMembers>
+        <Member Name="AboutInfoString" Caption="About Info String" />
+      </OwnMembers>
+    </Class>
+    <Class Name="DevExpress.ExpressApp.SystemModule.ActionContainerDescriptor" ObjectCaptionFormat="{0:ActionContainerId}" />
+    <Class Name="DevExpress.ExpressApp.SystemModule.DashboardCreationInfo" ObjectCaptionFormat="{0:DashboardName}" />
+    <Class Name="DevExpress.ExpressApp.SystemModule.DashboardViewItemDescriptor" ObjectCaptionFormat="{0:ViewDescription}" />
+    <Class Name="DevExpress.ExpressApp.SystemModule.StaticImageDashboardOrganizationItem" ObjectCaptionFormat="{0:ImageName}" />
+    <Class Name="DevExpress.Xpo.XPObject">
+      <OwnMembers>
+        <Member Name="Oid" EditMask="N0" DisplayFormat="{0:N0}" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <CreatableItems>
+    <CreatableItem ClassName="Aurum.Help.HelpView" Caption="Help View" />
+  </CreatableItems>
+  <Localization>
+    <LocalizationGroup Name="Namespaces">
+      <LocalizationItem Name="Aurum.Help" Value="Help" />
+      <LocalizationItem Name="DevExpress.ExpressApp.Editors" Value="Editors" />
+      <LocalizationItem Name="DevExpress.ExpressApp.SystemModule" Value="SystemModule" />
+      <LocalizationItem Name="DevExpress.Xpo" Value="Xpo" />
+    </LocalizationGroup>
+  </Localization>
+  <NavigationItems>
+    <Items>
+      <Item Id="Help" Caption="Справка">
+        <Items>
+          <Item Id="HelpView_ListView" Caption="Help View" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Options>
+    <LayoutManagerOptions CaptionColon=":" />
+  </Options>
+  <Views>
+    <DetailView Id="AboutInfo_DetailView" ObjectCaptionFormat="{0:ProductName}" CaptionColon=":" />
+    <DetailView Id="ActionContainerDashboardOrganizationItem_DetailView" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ActionContainerDescriptor_DetailView" ObjectCaptionFormat="{0:ActionContainerId}" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CriteriaProvider_DetailView" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DashboardCreationInfo_DetailView" ObjectCaptionFormat="{0:DashboardName}" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors">
+            <LayoutGroup Id="DashboardCreationInfo" Caption="DashboardCreationInfo">
+              <LayoutGroup Id="ViewItems" Caption="View Items" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DashboardOrganizationItem_DetailView" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main" />
+      </Layout>
+    </DetailView>
+    <DetailView Id="DashboardOrganizer_DetailView" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main" />
+      </Layout>
+    </DetailView>
+    <DetailView Id="DashboardViewItemDescriptor_DetailView" ObjectCaptionFormat="{0:ViewDescription}" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors">
+            <LayoutGroup Id="DashboardViewItemDescriptor" Caption="DashboardViewItemDescriptor" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DiagnosticInfoObject_DetailView" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main" />
+      </Layout>
+    </DetailView>
+    <DetailView Id="HelpDocument_DetailView" Caption="Справка" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main" />
+      </Layout>
+    </DetailView>
+    <DetailView Id="HelpView_DetailView" CaptionColon=":">
+      <Items>
+        <PropertyEditor Id="Oid" EditMask="N0" DisplayFormat="{0:N0}" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="HelpView_ListView">
+      <Columns>
+        <ColumnInfo Id="Oid" EditMask="N0" DisplayFormat="{0:N0}" />
+      </Columns>
+    </ListView>
+    <ListView Id="HelpView_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Oid" EditMask="N0" DisplayFormat="{0:N0}" />
+      </Columns>
+    </ListView>
+    <DetailView Id="PersistentBase_DetailView" CaptionColon=":" />
+    <DetailView Id="StaticImageDashboardOrganizationItem_DetailView" ObjectCaptionFormat="{0:ImageName}" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors">
+            <LayoutGroup Id="StaticImageDashboardOrganizationItem" Caption="StaticImageDashboardOrganizationItem" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="StaticTextDashboardOrganizationItem_DetailView" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main" />
+      </Layout>
+    </DetailView>
+    <DetailView Id="ViewDashboardOrganizationItem_DetailView" CaptionColon=":">
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors">
+            <LayoutGroup Id="ViewDashboardOrganizationItem" Caption="ViewDashboardOrganizationItem" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="XPBaseObject_DetailView" CaptionColon=":" />
+    <DetailView Id="XPCustomObject_DetailView" CaptionColon=":" />
+    <DetailView Id="XPObject_DetailView" CaptionColon=":">
+      <Items>
+        <PropertyEditor Id="Oid" EditMask="N0" DisplayFormat="{0:N0}" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" Caption="Main">
+          <LayoutGroup Id="SimpleEditors" Caption="SimpleEditors" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="XPObject_ListView">
+      <Columns>
+        <ColumnInfo Id="Oid" EditMask="N0" DisplayFormat="{0:N0}" />
+      </Columns>
+    </ListView>
+    <ListView Id="XPObject_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Oid" EditMask="N0" DisplayFormat="{0:N0}" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

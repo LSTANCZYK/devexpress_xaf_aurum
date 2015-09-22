@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<t:topics xmlns:t="http://ipcbc.ru/topics.xsd">
+  <topic id="xpo" name ="Слой данных Aurum.Xpo">
+    <content>
+      Слой данных <b>Aurum.Xpo</b>Aurum.Xpo основывается на поставщиках данных <b>DevExpress.Xpo</b>, дополняя их функционал.
+      Поставщиком данных для Oracle в Aurum.Xpo является <see cref="Aurum.Xpo.OracleConnectionProviderEx"/>, обладающий следующими особенностями:
+      <list>
+        <item>Взаимодействие с данными выполняется не напрямую через таблицы, а через процедуры и представления, что позволяет усилить безопасность данных</item>
+        <item>Поддержка схем базы данных с помощью атрибутов <see cref="Aurum.Xpo.PersistentSchemaAttribute"/> и внешних настроек <see cref="Aurum.Xpo.XPDictionaryInformer.SetupSchemaAttributes"/></item>
+        <item>Дополнительные атрибуты целостности данных (см. <see topic="xpo-attributes"/>), преобразуемые в констрейнты таблиц и инструкции в пакетах БД</item>
+        <item>Запись скрипта команд по изменению структуры БД в поток или файл</item>
+        <item>Поддержка команд администрирования безопасности (управление ролями, пользователями и их правами) на основе интерфейса <see cref="Aurum.Xpo.ISqlDataStoreSecurity"/> (см.также <see cref="Aurum.Xpo.IDataLayerSecurity"/>)</item>
+      </list>
+      Использование поставщика <see cref="Aurum.Xpo.OracleConnectionProviderEx"/> требует регистрации с помощью метода <see cref="Aurum.Xpo.OracleConnectionProviderEx.Register"/>. 
+      В строке соединения указывается тип поставщика <see cref="Aurum.Xpo.OracleConnectionProviderEx.XpoProviderTypeString"/> (&quot;SecuredODP&quot;). Также в строке соединения могут быть указаны следующие параметры:
+      <list>
+        <item>Script - название файла для записи команд изменения структуры БД в скрипт</item>
+        <item>Options - опции при обновлении структуры БД <see cref="Aurum.Xpo.UpdateSchemaOptions"/></item>
+        <item>Insensitive - установка параметров сессии <b>NLS_SORT</b> и <b>NLS_COMP</b></item>
+        <item>IndexTablespace - название табличного пространства индексов</item>
+      </list>
+    </content>
+    <seealso topic="xpo-attributes"/>
+    <todo>Сохранение enum как строки (есть реализация в expand)</todo>
+    <todo>Переделать хранение guid на raw(16) (сейчас varchar2(36))</todo>
+    <todo>
+      <![CDATA[
+  Долгосрочные задачи:
+  - Вызов массовой модификации по условию в Xpo (или виртуальный ключ для хранимых объектов без ключа)
+  - "Множественное наследование" в Xpo (разные типы организации от одной базовой записи)
+  - Выборка ICustomPersistentQuery.Select во вложенных запросах
+  - Удаление иерархических данных с родительской записью readonly (devexpress устанавливает null, потом удаляет)
+  - Констрейнт ConsistentPeriod для aggregated-свойств (devexpress сохраняет aggregated не сразу, а вместе 
+    с родительской сущностью, и в своем порядке (add новой, edit предыдущей), в итоге ошибка. пример Person.Passports)
+  Наиболее актуальные:
+  - Кастомизация и фильтрация в наследованных ассоциациях (XPCollection<T> Items -> XPCollection<T2> Items2)
+  - NonPersistent как Persistent (ObjectSpaceInMemory)
+    ]]></todo>
+    <todo>Ссылочная целостность при логическом удалении записи</todo>
+  </topic>
+  <topic id="xpo-attributes" category="xpo" name="Атрибуты целостности данных БД">
+    <summary>В этой теме описаны атрибуты, устанавливающие целостность данных в базе данных</summary>
+    <content>
+      В <see cref="Aurum.Xpo"/> реализованы атрибуты, которые при создании структуры БД автоматически создают констрейнты таблиц (такие как <b>not null</b>)
+      и дополняют процедуры и представления данных инструкциями, также предназначенными для контроля целостности данных.
+      <table>
+        <header><cell>Атрибут</cell><cell>Описание</cell></header>
+        <row>
+          <cell><see cref="Aurum.Xpo.NotNullAttribute"/></cell>
+          <cell>Устанавливает констрейнт <b>not null</b></cell>
+        </row>
+        <row>
+          <cell><see cref="Aurum.Xpo.ReadOnlyAttribute"/></cell>
+          <cell>Устанавливает свойство только для чтения, исключая его из параметров процедуры редактирования. 
+          Атрибут <b>не используется</b>, так как стандартный поставщик пространства объектов <see cref="DevExpress.ExpressApp.Xpo.XPObjectSpaceProvider"/> 
+          реализует свою логику работы с данными и в разных случаях требует изменить свойство (например, при удалении дочерних объектов ассоциации)</cell>
+        </row>
+        <row>
+          <cell><see cref="Aurum.Xpo.ConsistentPeriodAttribute"/></cell>
+          <cell>Определяет периодичность объектов класса по указанному ключу и проверяет отсутствие пересечения периодов</cell>
+        </row>
+        <row>
+          <cell><see cref="Aurum.Xpo.HierarchyAttribute"/></cell>
+          <cell>Определяет иерархию объектов класса по указанному свойству и проверяет отсутствие циклов в иерархии <see cref="Aurum.Xpo.HierarchyAttribute.NoCycle"/></cell>
+        </row>
+        <row>
+          <cell><see cref="Aurum.Xpo.UniqueAttribute"/></cell>
+          <cell>Определяет уникальность записей по указанным свойствам</cell>
+        </row>
+        <row>
+          <cell><see cref="Aurum.Xpo.ConstraintAttribute"/></cell>
+          <cell>Определяет произвольное выражение целостности данных</cell>
+        </row>
+        <row>
+          <cell><see cref="Aurum.Xpo.SecurityAttribute"/></cell>
+          <cell>Определяет выражение доступа к операциям с данными <see cref="Aurum.Xpo.DBOperations"/></cell>
+        </row>
+      </table>
+    </content>
+  </topic>
+</t:topics>

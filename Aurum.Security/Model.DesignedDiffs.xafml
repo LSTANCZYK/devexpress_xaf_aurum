@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel>
+    <Class Name="Aurum.Security.DatabaseObject">
+      <OwnMembers>
+        <Member Name="Id" EditMaskType="RegEx" EditMask="[A-Z][A-Z,0-9,_]+" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Security.DatabaseUser">
+      <OwnMembers>
+        <Member Name="Created" AllowEdit="False" DisplayFormat="{0:G}" />
+        <Member Name="Locked" AllowEdit="False" DisplayFormat="{0:G}" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="14.1.8.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="ContractPermission_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ContractPermission" RelativeSize="100" Direction="Vertical">
+              <LayoutGroup Id="ContractPermission_col1" RelativeSize="92.4908424908425">
+                <LayoutItem Id="TargetType" ViewItem="TargetType" SizeConstraintsType="Default" Index="0" RelativeSize="6.3366336633663369" IsNewNode="True" />
+                <LayoutItem Id="AllowCreate" SizeConstraintsType="Default" Index="1" RelativeSize="4.7524752475247523" />
+                <LayoutItem Id="TypeCaption" SizeConstraintsType="Default" Index="1" RelativeSize="3.125" Removed="True" />
+                <LayoutItem Id="AllowRead" SizeConstraintsType="Default" Index="2" RelativeSize="4.7524752475247523" />
+                <LayoutItem Id="AllowWrite" ViewItem="AllowWrite" SizeConstraintsType="Default" Index="3" RelativeSize="4.7524752475247523" IsNewNode="True" />
+                <LayoutItem Id="AllowDelete" ViewItem="AllowDelete" SizeConstraintsType="Default" Index="4" RelativeSize="4.7524752475247523" IsNewNode="True" />
+                <LayoutItem Id="AllowTransfer" ViewItem="AllowTransfer" SizeConstraintsType="Default" Index="5" RelativeSize="74.653465346534659" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="ContractPermission_col2" RelativeSize="48.480845442536328" Caption="ContractPermission_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="AllowDelete" Removed="True" />
+                <LayoutItem Id="AllowWrite" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DatabasePrivilege_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="DatabasePrivilege" RelativeSize="100" Direction="Vertical">
+              <LayoutGroup Id="DatabasePrivilege_col1" RelativeSize="5.775577557755776" Caption="DatabasePrivilege_col1">
+                <LayoutItem Id="TargetType" ViewItem="TargetType" SizeConstraintsType="Default" Index="0" RelativeSize="100" IsNewNode="True" />
+                <LayoutItem Id="AllowSelect" SizeConstraintsType="Default" Index="1" RelativeSize="89.576547231270354" Removed="True" />
+                <LayoutItem Id="AllowInsert" Removed="True" />
+                <LayoutItem Id="TypeCaption" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="DatabasePrivilege_col2" RelativeSize="87.458745874587464" Direction="Horizontal">
+                <LayoutItem Id="AllowInsert" ViewItem="AllowInsert" SizeConstraintsType="Default" Index="0" RelativeSize="19.047619047619047" IsNewNode="True" />
+                <LayoutItem Id="AllowSelect" ViewItem="AllowSelect" SizeConstraintsType="Default" Index="1" RelativeSize="18.347338935574228" IsNewNode="True" />
+                <LayoutItem Id="AllowUpdate" SizeConstraintsType="Default" RelativeSize="18.347338935574228" Index="2" />
+                <LayoutItem Id="AllowDelete" ViewItem="AllowDelete" SizeConstraintsType="Default" Index="3" RelativeSize="44.257703081232492" IsNewNode="True" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DatabaseUser_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="10.147299509001636">
+            <LayoutGroup Id="DatabaseUser" RelativeSize="100">
+              <LayoutItem Id="Id" ViewItem="Id" SizeConstraintsType="Default" Index="0" RelativeSize="51.612903225806448" IsNewNode="True" />
+              <LayoutGroup Id="Auto3cfe2831-1def-46f8-bdad-b96148e5a83c" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="48.387096774193552" IsNewNode="True">
+                <LayoutItem Id="IsActive" ViewItem="IsActive" SizeConstraintsType="Default" Index="0" RelativeSize="17.96565389696169" IsNewNode="True" />
+                <LayoutItem Id="IsExpired" ViewItem="IsExpired" SizeConstraintsType="Default" Index="1" RelativeSize="16.380449141347423" IsNewNode="True" />
+                <LayoutItem Id="Locked" ViewItem="Locked" SizeConstraintsType="Default" Index="2" RelativeSize="29.062087186261557" IsNewNode="True" />
+                <LayoutItem Id="Created" ViewItem="Created" SizeConstraintsType="Default" Index="3" RelativeSize="36.591809775429326" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutItem Id="IsActive" SizeConstraintsType="Default" Index="1" RelativeSize="17.910447761194028" Removed="True" />
+              <LayoutItem Id="Created" SizeConstraintsType="Default" Index="2" RelativeSize="34.883720930232556" Removed="True" />
+              <LayoutItem Id="IsExpired" SizeConstraintsType="Default" Index="2" RelativeSize="17.910447761194028" Removed="True" />
+              <LayoutItem Id="Locked" SizeConstraintsType="Default" Index="2" RelativeSize="21.818181818181817" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="DatabaseObject" Direction="Horizontal" RelativeSize="56.209150326797385" Removed="True">
+              <LayoutItem Id="Id" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Roles_Group" Direction="Vertical" RelativeSize="89.852700490998359" Index="1">
+            <LayoutItem Id="Roles" SizeConstraintsType="Default" RelativeSize="92.896174863387984" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="OwnedUser_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Id" Index="0" />
+        <ColumnInfo Id="LastName" Index="1" />
+        <ColumnInfo Id="FirstName" Index="2" />
+        <ColumnInfo Id="MiddleName" Index="3" />
+        <ColumnInfo Id="Owner" Index="4" />
+      </Columns>
+    </ListView>
+    <ListView Id="ServerUser_LookupListView">
+      <Columns>
+        <ColumnInfo Id="FirstName" PropertyName="FirstName" IsNewNode="True" />
+        <ColumnInfo Id="Id" PropertyName="Id" IsNewNode="True" />
+        <ColumnInfo Id="MiddleName" PropertyName="MiddleName" IsNewNode="True" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

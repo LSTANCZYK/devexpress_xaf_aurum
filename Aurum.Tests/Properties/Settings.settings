@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Aurum.Tests.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Connection" Type="System.String" Scope="User">
+      <Value Profile="(Default)">XpoProvider=SecuredODP;Data Source=(DESCRIPTION=(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.211)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = DEVELOP)));user id=testxpo;password=testxpo123;</Value>
+    </Setting>
+    <Setting Name="ConnectionAdmin" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=(DESCRIPTION=(ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.211)(PORT = 1521))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = DEVELOP)));user id=testadmin;password=testadmin1234567890;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

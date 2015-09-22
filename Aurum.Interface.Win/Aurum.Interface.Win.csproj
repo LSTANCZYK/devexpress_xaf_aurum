@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C7AF2E3D-B7FF-4EDF-B25C-4EE48D94087D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Aurum.Interface.Win</RootNamespace>
+    <AssemblyName>Aurum.Interface.Win</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.ReportsV2.v14.1" />
+    <Reference Include="DevExpress.ExpressApp.Win.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.Xpo.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v14.1.Core">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.Base.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.BaseImpl.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v14.1">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v14.1" />
+    <Reference Include="DevExpress.XtraGrid.v14.1" />
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\FilterWindowViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\FilterWindowViewController.Designer.cs">
+      <DependentUpon>FilterWindowViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ReportParametersViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ReportParametersViewController.Designer.cs">
+      <DependentUpon>ReportParametersViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\AurumCheckedListBoxControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\BooleanPropertyEditor.cs" />
+    <Compile Include="Editors\CharPropertyEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\ComboBoxStringPropertyEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\CustomCheckedListBoxEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\CustomCheckedListBoxEdit.Designer.cs">
+      <DependentUpon>CustomCheckedListBoxEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\DateTimePropertyEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\ExtLookupPropertyEditor.cs" />
+    <Compile Include="Editors\FilterableEnumPropertyEditor.cs" />
+    <Compile Include="Editors\FontEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\FontEdit.Designer.cs">
+      <DependentUpon>FontEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\FontPropertyEditor.cs" />
+    <Compile Include="Editors\OpenFileEditor.cs" />
+    <Compile Include="Editors\FolderBrowseEditor.cs" />
+    <Compile Include="Editors\PasswordControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editors\PasswordControl.Designer.cs">
+      <DependentUpon>PasswordControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editors\PasswordEditor.cs" />
+    <Compile Include="Editors\PropertyEditorException.cs" />
+    <Compile Include="Editors\ReferencePropertyEditor.cs" />
+    <Compile Include="Editors\SBytePropertyEditor.cs" />
+    <Compile Include="Editors\StringPropertyEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Editors\ULongPropertyEditor.cs" />
+    <Compile Include="Editors\WinCheckedListBoxPropertyEditor.cs" />
+    <Compile Include="Application\AurumMdiStrategy.cs" />
+    <Compile Include="Filters\Edits\ArrayEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\Edits\ArrayEdit.Designer.cs">
+      <DependentUpon>ArrayEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\Edits\ControlPair.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Filters\Edits\ChangeSizeDirection.cs" />
+    <Compile Include="Filters\Edits\DateTimeEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Filters\Edits\DecimalEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Filters\Edits\EditFactory.cs" />
+    <Compile Include="Filters\Edits\IDynamicLayoutControl.cs" />
+    <Compile Include="Filters\Edits\IMethodParameter.cs" />
+    <Compile Include="Filters\Edits\IntegerEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Filters\Edits\IParameterValueChanged.cs" />
+    <Compile Include="Filters\Edits\TextBoxEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Filters\Edits\VerticalLayout.cs" />
+    <Compile Include="Filters\Edits\VerticalLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Filters\Extensions.cs" />
+    <Compile Include="Filters\Formats.cs" />
+    <Compile Include="Filters\QueryGridBooleanFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridBooleanFilter.Designer.cs">
+      <DependentUpon>QueryGridBooleanFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\QueryGridDateFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridDateFilter.Designer.cs">
+      <DependentUpon>QueryGridDateFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\QueryGridDecimalFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridEnumFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridEnumFilter.Designer.cs">
+      <DependentUpon>QueryGridEnumFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\QueryGridFilterBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridFilterBase.Designer.cs">
+      <DependentUpon>QueryGridFilterBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\QueryGridFilterFactory.cs" />
+    <Compile Include="Filters\QueryGridIntegerFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridNumberFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridNumberFilter.Designer.cs">
+      <DependentUpon>QueryGridNumberFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\QueryGridStringFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridStringFilter.Designer.cs">
+      <DependentUpon>QueryGridStringFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\QueryGridStringFilterBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\QueryGridStringFilterBase.Designer.cs">
+      <DependentUpon>QueryGridStringFilterBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Module.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Module.Designer.cs">
+      <DependentUpon>Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DatabaseUpdate\Updater.cs" />
+    <Compile Include="Filters\FilterWindowControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\FilterWindowControl.Designer.cs">
+      <DependentUpon>FilterWindowControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\FilterWindowView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controllers\FilterWindowViewController.resx">
+      <DependentUpon>FilterWindowViewController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\ReportParametersViewController.resx">
+      <DependentUpon>ReportParametersViewController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\CustomCheckedListBoxEdit.resx">
+      <DependentUpon>CustomCheckedListBoxEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\FontEdit.resx">
+      <DependentUpon>FontEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editors\PasswordControl.resx">
+      <DependentUpon>PasswordControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\Edits\ArrayEdit.resx">
+      <DependentUpon>ArrayEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\QueryGridBooleanFilter.resx">
+      <DependentUpon>QueryGridBooleanFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\QueryGridDateFilter.resx">
+      <DependentUpon>QueryGridDateFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\QueryGridEnumFilter.resx">
+      <DependentUpon>QueryGridEnumFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\QueryGridFilterBase.resx">
+      <DependentUpon>QueryGridFilterBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\QueryGridNumberFilter.resx">
+      <DependentUpon>QueryGridNumberFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\QueryGridStringFilter.resx">
+      <DependentUpon>QueryGridStringFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\QueryGridStringFilterBase.resx">
+      <DependentUpon>QueryGridStringFilterBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module.resx">
+      <DependentUpon>Module.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Filters\FilterWindowControl.resx">
+      <DependentUpon>FilterWindowControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Filters\Resources\Textfield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aurum.Interface\Aurum.Interface.csproj">
+      <Project>{EA84B3E6-E524-48D4-98A3-141007A79552}</Project>
+      <Name>Aurum.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aurum.Xpo\Aurum.Xpo.csproj">
+      <Project>{84D72249-D18D-4115-AE3E-F0B2A2D7D6CE}</Project>
+      <Name>Aurum.Xpo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Filters\Resources\TextfieldAbc.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Filters\Resources\TextfieldAbcSelected.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Filters\Resources\TextfieldAbcStartsel.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Filters\Resources\TextfieldAdd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Filters\Resources\TextfieldDelete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Filters\Resources\TextSmallCaps.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Aurum.App" Logo="ExpressAppLogo">
+  <ActionDesign>
+    <ActionToContainerMapping>
+      <ActionContainer Id="TestOpContainer" IsNewNode="True">
+        <ActionLink ActionId="TestOperation1" IsNewNode="True" />
+      </ActionContainer>
+    </ActionToContainerMapping>
+  </ActionDesign>
+  <Aurum>
+    <MenuEditor>
+      <Menus>
+        <Menu Id="@09c7e499-4df1-4cbc-8d7d-6e9f841952d2" Caption="Паспортный стол (Полный)" MenuCaption="Паспортный стол" IsNewNode="True">
+          <Action Id="@50a10acb-16d4-4349-86db-09730f77b078" Action="simpleAction1" Index="0" IsNewNode="True" />
+          <Action Id="@2fb69feb-4ad7-46c0-9d59-4d0cac0e2fec" Action="popupTest" Index="1" IsNewNode="True" />
+          <View Id="@01d945a6-6136-4aa1-ae7e-0d7034592a77" View="House_ListView" Index="2" IsNewNode="True" />
+          <View Id="@3d01c324-b9e9-4f65-b528-a523474b8478" View="Flat_ListView" Index="3" IsNewNode="True" />
+          <View Id="@383243cf-231a-4a95-9ad2-582d75e7989f" View="Person_ListView" Index="4" IsNewNode="True" />
+          <Action Id="@35d77b5f-a0fd-4716-aa7a-87a20b31e493" Action="ShowOperationsAction" ImageName="Action_ShowItemOnDashboard" Index="5" IsNewNode="True" />
+          <TemplateLink Id="@91e1d574-73f7-4d11-9a94-bb54623cbe37" Template="@91471eef-c462-404a-a7a0-ac1a93c5e3f2" Caption="Шаблончик" Index="6" IsNewNode="True" />
+          <TemplateLink Id="@3761bad3-d780-4121-9e12-10a54a9aefaf" Template="@7a59abc4-45ab-491d-ae69-7b5aba9edc5b" Index="7" IsNewNode="True" />
+          <TemplateLink Id="@4fae1a50-bd64-4079-9a7f-30f78bfa963f" Template="@477204ba-b8ab-4375-92e3-214ca7860259" IsNewNode="True" />
+        </Menu>
+        <Menu Id="@c4feb9db-ac23-412c-80fe-0561cc56d6d0" Caption="Паспортный стол сокращенный" MenuCaption="Паспортный стол" IsNewNode="True">
+          <TemplateLink Id="@590e410b-60e4-4b9c-8231-53c7bc11be4d" Template="@91471eef-c462-404a-a7a0-ac1a93c5e3f2" Caption="Шаблончег" Index="0" IsNewNode="True" />
+          <TemplateLink Id="@3993278d-8b40-41cb-802c-c2ce3d3d81d0" Template="@7a59abc4-45ab-491d-ae69-7b5aba9edc5b" Index="1" IsNewNode="True" />
+          <TemplateLink Id="@33ce6233-a986-43e4-85dc-d11c126742f9" Template="@477204ba-b8ab-4375-92e3-214ca7860259" IsNewNode="True" />
+        </Menu>
+      </Menus>
+      <Templates>
+        <Template Id="@477204ba-b8ab-4375-92e3-214ca7860259" IsNewNode="True">
+          <Action Id="@dd19720f-9a7b-42e9-8010-46621db566e7" Action="Aurum.App.Module.Exports.ComplexHouseExportAction" Index="0" IsNewNode="True" />
+          <Action Id="@dd19720f-9a7b-42e9-8010-46621db566e7_Copy" Action="Aurum.App.Module.Exports.House2ExportAction" Index="1" IsNewNode="True" />
+          <Action Id="@dd19720f-9a7b-42e9-8010-46621db566e7_Copy_Copy" Action="Aurum.App.Module.Exports.House3ExportAction" Index="2" IsNewNode="True" />
+          <Action Id="@cbf8dad8-d190-4491-bdaf-c8ef626acfae" Action="Aurum.App.Module.Exports.House4ExportAction" Index="3" IsNewNode="True" />
+          <Action Id="@dcb15067-1f13-4ded-9129-4fe0d96924f3" Action="Aurum.App.Module.Exchange.PersonImportAction" Index="4" IsNewNode="True" />
+          <Action Id="@a239b8d0-cbc2-4019-9b68-84508d3233a8" Action="Aurum.App.Module.Exchange.ComplexImportAction" Index="5" IsNewNode="True" />
+          <Action Id="@ae3322b4-1090-48ee-bbc6-4e854f1a2757" Action="Aurum.App.Module.Exchange.ExcelImportAction" IsNewNode="True" />
+          <Action Id="@c609f808-44cf-457f-9436-aeedb2bb56f3" Action="Aurum.App.Module.Exchange.House5ExportAction" IsNewNode="True" />
+        </Template>
+        <Template Id="@7a59abc4-45ab-491d-ae69-7b5aba9edc5b" IsNewNode="True">
+          <Action Id="@3c39c0a7-1c26-475c-85ae-0f79fd8ed903" Action="Report_Aurum.App.Module.Reports.XtraReport1" IsNewNode="True" />
+        </Template>
+        <Template Id="@91471eef-c462-404a-a7a0-ac1a93c5e3f2" Caption="Шаблон 1" IsNewNode="True">
+          <Folder Id="@dbbeb45c-d351-49ff-8c50-402fbe69f2dc" Caption="Физ. лицо" IsNewNode="True">
+            <View Id="@a01e83ce-aace-4067-9649-d2b64aa0b2b7" View="Person_ListView" IsNewNode="True" />
+          </Folder>
+          <Folder Id="@dc14ed16-b8dc-4b37-a977-f4fde6c65505" Caption="Пустая папка" IsNewNode="True" />
+        </Template>
+      </Templates>
+    </MenuEditor>
+  </Aurum>
+  <BOModel>
+    <Class Name="Aurum.App.Module.BusinessObjects.Person" AllowCreate="False" AllowDelete="True" AllowLink="False" AllowUnlink="True" />
+  </BOModel>
+  <Exports>
+    <Export TypeName="Aurum.App.Module.Exports.House4Export" Index="4" />
+    <Export TypeName="Aurum.App.Module.Exports.House3Export" Index="5" />
+  </Exports>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="14.1.8.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="Flat_DetailView">
+      <Items>
+        <PropertyEditor Id="Lodgers" DisplayItem="7654567" />
+      </Items>
+    </DetailView>
+    <ListView Id="Person_ListView">
+      <Columns>
+        <ColumnInfo Id="Oid" ShowFilter="False" FilterIndex="0" />
+        <ColumnInfo Id="Lastname" FilterIndex="0" Focus="False" />
+        <ColumnInfo Id="Firstname" FilterIndex="1" Focus="True" />
+        <ColumnInfo Id="Birthdate" ShowFilter="True" />
+        <ColumnInfo Id="Sum" ShowFilter="True" />
+        <ColumnInfo Id="Flat" ShowFilter="True" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

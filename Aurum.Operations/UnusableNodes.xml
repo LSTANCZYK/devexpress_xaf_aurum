@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="OperationObject_DetailView_(Composite)">
+      <Items Id="Items">
+        <PropertyEditor Id="TaskId" PropertyName="TaskId" />
+      </Items>
+    </DetailView>
+    <DetailView Id="OperationObject_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="OperationObject">
+              <LayoutGroup Id="OperationObject_col1">
+                <LayoutItem Id="TaskId" SizeConstraintsType="Default" RelativeSize="21.428571428571427" Index="2" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="OperationObject_Children_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="TaskId" Index="2" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

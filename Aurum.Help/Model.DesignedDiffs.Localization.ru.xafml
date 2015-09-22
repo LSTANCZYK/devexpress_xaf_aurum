@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="DescribeAction" Caption="Описать" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="Aurum.Help.HelpDocument" Caption="Документ справки">
+      <OwnMembers>
+        <Member Name="Text" Caption="Текст" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Help.HelpView" Caption="Справка">
+      <OwnMembers>
+        <Member Name="Text" Caption="Текст" />
+        <Member Name="ViewId" Caption="Идентификатор представления" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Help.Project" Caption="Проект">
+      <OwnMembers>
+        <Member Name="Documents" Caption="Документы" />
+        <Member Name="Name" Caption="Название" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Help.ProjectDocument" Caption="Документ проекта">
+      <OwnMembers>
+        <Member Name="Childs" Caption="Дочерние документы" />
+        <Member Name="Index" Caption="Индекс" />
+        <Member Name="Name" Caption="Название" />
+        <Member Name="Parent" Caption="Родительский объект" />
+        <Member Name="Project" Caption="Проект" />
+        <Member Name="Text" Caption="Текст" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+</Application>

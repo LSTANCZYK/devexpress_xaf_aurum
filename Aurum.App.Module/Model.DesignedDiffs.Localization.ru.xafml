@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Aurum>
+    <MenuEditor>
+      <Menus>
+        <Menu Id="@09c7e499-4df1-4cbc-8d7d-6e9f841952d2">
+          <Action Id="@35d77b5f-a0fd-4716-aa7a-87a20b31e493" Caption="Текущие операции" ToolTip="Показать текущие операции" />
+        </Menu>
+      </Menus>
+      <Templates>
+        <Template Id="@477204ba-b8ab-4375-92e3-214ca7860259" Caption="Обмен">
+          <Action Id="@dd19720f-9a7b-42e9-8010-46621db566e7" Caption="ComplexHouseExport" />
+          <Action Id="@dd19720f-9a7b-42e9-8010-46621db566e7_Copy" Caption="House2Export" />
+          <Action Id="@dd19720f-9a7b-42e9-8010-46621db566e7_Copy_Copy" Caption="House3Export" />
+          <Action Id="@cbf8dad8-d190-4491-bdaf-c8ef626acfae" Caption="House4Export" />
+          <Action Id="@dcb15067-1f13-4ded-9129-4fe0d96924f3" Caption="PersonImport" />
+          <Action Id="@a239b8d0-cbc2-4019-9b68-84508d3233a8" Caption="ComplexImport" />
+          <Action Id="@ae3322b4-1090-48ee-bbc6-4e854f1a2757" Caption="ExcelImportAction" />
+          <Action Id="@c609f808-44cf-457f-9436-aeedb2bb56f3" Caption="House5ExportAction" />
+        </Template>
+        <Template Id="@7a59abc4-45ab-491d-ae69-7b5aba9edc5b" Caption="Отчеты" />
+      </Templates>
+    </MenuEditor>
+  </Aurum>
+  <BOModel>
+    <Class Name="Aurum.App.Module.BusinessObjects.Person" Caption="Физ. лицо">
+      <OwnMembers>
+        <Member Name="Birthdate" Caption="Дата рождения" />
+        <Member Name="Blood" Caption="Группа крови" />
+        <Member Name="Comments" Caption="Примечание" />
+        <Member Name="Firstname" Caption="Имя" />
+        <Member Name="Flat" Caption="Квартира" />
+        <Member Name="Lastname" Caption="Фамилия" />
+        <Member Name="Recipient" Caption="Получатель" />
+        <Member Name="Sex" Caption="Пол" />
+        <Member Name="Sum" Caption="Сумма" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Exports>
+    <Export TypeName="Aurum.App.Module.Exports.ComplexHouseExport" Name="Составной экспорт" />
+    <Export TypeName="Aurum.App.Module.Exports.House2Export" Name="Имя!" />
+  </Exports>
+  <Localization>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="Aurum.App.Module.BusinessObjects.PersonSex" Value="Пол">
+        <LocalizationItem Name="Female" Value="Женский" />
+        <LocalizationItem Name="Male" Value="Мужской" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+</Application>

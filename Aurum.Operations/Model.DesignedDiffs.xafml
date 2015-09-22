@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Company="" AllowedAutoRefreshValues="1,2,3,4">
+  <BOModel>
+    <Class Name="Aurum.Operations.LogItemObject" ImageName="Action_Inline_Edit" />
+    <Class Name="Aurum.Operations.OperationObject" ImageName="Action_Debug_Start" DefaultDetailView="OperationObject_DetailView_(Composite)" />
+    <Class Name="Aurum.Operations.OperationObjects" ImageName="Action_WindowList" />
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Captions">
+      <LocalizationItem Name="ExceptionText" Value="Error message: {0}" IsNewNode="True" />
+      <LocalizationItem Name="Operation" IsNewNode="True" />
+      <LocalizationItem Name="StatusText" Value="Status: {0}" IsNewNode="True" />
+      <LocalizationItem Name="UnnamedOperation" IsNewNode="True" />
+    </LocalizationGroup>
+  </Localization>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="14.1.8.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="14.1.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <ListView Id="LogItemObject_ListView">
+      <Columns>
+        <ColumnInfo Id="Index" SortIndex="0" SortOrder="Descending" />
+      </Columns>
+    </ListView>
+    <ListView Id="OperationObject_Children_ListView" AllowEdit="False" AutoExpandAllGroups="False" AllowNew="False" AllowDelete="False">
+      <Columns>
+        <ColumnInfo Id="Parent" Index="-1" />
+        <ColumnInfo Id="OperationId" SortIndex="0" SortOrder="Descending" Index="0" />
+        <ColumnInfo Id="Status" Index="1" />
+        <ColumnInfo Id="Progress" Index="3" />
+        <ColumnInfo Id="StatusText" Index="4" />
+        <ColumnInfo Id="Added" Index="5" />
+        <ColumnInfo Id="Started" Index="6" />
+        <ColumnInfo Id="Ended" Index="7" />
+      </Columns>
+    </ListView>
+    <DetailView Id="OperationObject_DetailView" AllowDelete="False" AllowEdit="False" AllowNew="False">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="20.133333333333333">
+            <LayoutGroup Id="OperationObject" Caption="Operation Object" RelativeSize="100">
+              <LayoutGroup Id="OperationObject_col1" RelativeSize="49.862637362637365">
+                <LayoutItem Id="Status" SizeConstraintsType="Default" RelativeSize="28.571428571428573" Index="0" />
+                <LayoutItem Id="OperationId" SizeConstraintsType="Default" RelativeSize="21.428571428571427" Index="1" />
+                <LayoutItem Id="Progress" SizeConstraintsType="Default" RelativeSize="50" Index="2" />
+                <LayoutItem Id="Exception" Removed="True" />
+                <LayoutItem Id="Parent" SizeConstraintsType="Default" RelativeSize="23.529411764705884" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="OperationObject_col2" RelativeSize="50.137362637362635">
+                <LayoutItem Id="StatusText" SizeConstraintsType="Default" RelativeSize="28.571428571428573" />
+                <LayoutItem Id="Added" SizeConstraintsType="Default" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="Started" SizeConstraintsType="Default" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="Ended" SizeConstraintsType="Default" RelativeSize="28.571428571428573" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutItem Id="Items" ShowCaption="False" ViewItem="Items" SizeConstraintsType="Default" Index="1" RelativeSize="79.86666666666666" IsNewNode="True" />
+          <TabbedGroup Id="Tabs" RelativeSize="76.463560334528083" Index="2" Removed="True">
+            <LayoutGroup Id="Children" Removed="True" />
+            <LayoutGroup Id="Items" RelativeSize="0" Direction="Horizontal">
+              <LayoutItem Id="Items" Removed="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="OperationObject_DetailView_(Composite)" ClassName="Aurum.Operations.OperationObject" AllowDelete="False" AllowEdit="False" AllowNew="False" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Added" PropertyName="Added" IsNewNode="True" />
+        <PropertyEditor Id="Children" PropertyName="Children" View="OperationObject_Children_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Ended" PropertyName="Ended" IsNewNode="True" />
+        <PropertyEditor Id="Items" PropertyName="Items" View="OperationObject_Items_ListView" IsNewNode="True" />
+        <PropertyEditor Id="OperationId" PropertyName="OperationId" IsNewNode="True" />
+        <PropertyEditor Id="Parent" PropertyName="Parent" IsNewNode="True" />
+        <PropertyEditor Id="Progress" PropertyName="Progress" IsNewNode="True" />
+        <PropertyEditor Id="Started" PropertyName="Started" IsNewNode="True" />
+        <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
+        <PropertyEditor Id="StatusText" PropertyName="StatusText" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" RelativeSize="14.666666666666666" IsNewNode="True">
+            <LayoutGroup Id="OperationObject" Index="0" Direction="Horizontal" ShowCaption="False" Caption="Operation Object" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="OperationObject_col1" Index="0" ShowCaption="False" RelativeSize="50" IsNewNode="True">
+                <LayoutItem Id="Status" ViewItem="Status" Index="0" SizeConstraintsType="Default" RelativeSize="29.09090909090909" IsNewNode="True" />
+                <LayoutItem Id="OperationId" ViewItem="OperationId" Index="1" SizeConstraintsType="Default" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="TaskId" ViewItem="TaskId" Index="2" SizeConstraintsType="Default" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="Progress" ViewItem="Progress" Index="3" SizeConstraintsType="Default" RelativeSize="27.272727272727273" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="OperationObject_col2" Index="1" ShowCaption="False" RelativeSize="50" IsNewNode="True">
+                <LayoutItem Id="StatusText" ViewItem="StatusText" Index="0" SizeConstraintsType="Default" RelativeSize="29.09090909090909" IsNewNode="True" />
+                <LayoutItem Id="Added" ViewItem="Added" Index="1" SizeConstraintsType="Default" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="Started" ViewItem="Started" Index="2" SizeConstraintsType="Default" RelativeSize="21.818181818181817" IsNewNode="True" />
+                <LayoutItem Id="Ended" ViewItem="Ended" Index="3" SizeConstraintsType="Default" RelativeSize="27.272727272727273" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="85.333333333333329" IsNewNode="True">
+            <LayoutGroup Id="Items" Index="0" ShowCaption="True" RelativeSize="100" IsNewNode="True">
+              <LayoutItem Id="Items" ViewItem="Items" ShowCaption="False" Index="0" SizeConstraintsType="Default" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Children" Index="1" ShowCaption="True" RelativeSize="100" IsNewNode="True">
+              <LayoutItem Id="Children" ViewItem="Children" ShowCaption="False" Index="0" SizeConstraintsType="Default" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="OperationObject_Items_ListView" AllowDelete="False" AllowNew="False" DataAccessMode="Client">
+      <Columns>
+        <ColumnInfo Id="Index" SortIndex="0" Width="1" SortOrder="Descending" />
+        <ColumnInfo Id="Type" Width="1" Index="1" />
+        <ColumnInfo Id="OperationId" Index="2" />
+        <ColumnInfo Id="Message" Index="3" />
+      </Columns>
+    </ListView>
+    <DetailView Id="OperationObjects_DetailView" AllowDelete="False" AllowEdit="False" AllowNew="False">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="Objects_Group" ShowCaption="False" Direction="Vertical" RelativeSize="100">
+            <LayoutItem Id="Objects" SizeConstraintsType="Default" RelativeSize="100" ShowCaption="False" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="OperationObjects_Objects_ListView" AllowDelete="False" AllowNew="False" Criteria="IsNull(Parent)">
+      <Columns>
+        <ColumnInfo Id="Parent" Index="-1" />
+        <ColumnInfo Id="OperationId" SortIndex="0" SortOrder="Descending" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <BOModel>
+    <Class Name="Aurum.App.Module.BusinessObjects.House">
+      <OwnMembers>
+        <Member Name="Flats" PropertyEditorType="Aurum.Interface.Win.Editors.WinCheckedListBoxPropertyEditor" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.App.Module.BusinessObjects.Master">
+      <OwnMembers>
+        <Member Name="Details" PropertyEditorType="Aurum.Interface.Win.Editors.WinCheckedListBoxPropertyEditor" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <Options FormStyle="Ribbon" UIType="TabbedMDI" MdiDefaultNewWindowTarget="Default" RestoreTabbedMdiLayout="False" />
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="14.1.8.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="14.1.8.0" IsNewNode="True" />
+  </SchemaModules>
+</Application>

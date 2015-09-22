@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<t:topics xmlns:t="http://ipcbc.ru/topics.xsd">
+  <topic id="security" name="Слой безопасности Aurum.Security">
+    <content>
+      Слой безопасности <b>Aurum.Security</b> расширяет управление безопасностью данных,
+      интегрируя объекты безопасности БД и предоставляя дополнительные конфигурации безопасности.
+      Aurum.Security предоставляет следующие возможности:
+      <list>
+        <item>Безопасность на стороне БД с использованием ролей, пользователей и привилегий БД (см. <see topic="security-server"/>)</item>
+        <item>Безопасность, основанная на контрактах (см. <see topic="security-contracts"/>)</item>
+        <item>Безопасность, основанная на контрактах между собственниками данных</item>
+        <item>Одновременное использование разных систем безопасности с помощью поставщика сложной системы безопасности <see cref="Aurum.Security.ComplexObjectSpaceProvider"/></item>
+      </list>
+    </content>
+    <todo>
+      Заменить стандартные TypeOperationPermission (команды администрирования и привилегии ролей) на DatabasePrivilege с обработкой
+      в DatabasePermissionRequestProcessor (вместо Admin...), чтобы при использовании сложной безопасности введенные пользователем
+      разрешения не смешались с привилегиями базы данных. TypePermissions также полезно оставить для проверки клиентских запросов.
+      <br/>Реализовано частично: <see cref="Aurum.Security.DatabaseUser.PermissionMode"/>. Системные привилегии оставлены как есть.
+    </todo>
+    <todo>
+      Запросы грантов безопасности: сейчас пользователь и его гранты в базе данных постоянно перезагружаются,
+      при этом контекст безопасности остается старым (FilialUser.AccessFilials не изменяется, а FilialUser.AllFilials изменяется)
+      <br/>Реализовано: <see cref="Aurum.Security.ComplexObjectSpaceProvider.CreateUnitOfWork"/> (securities инициализируются только в первый раз)
+    </todo>
+    <todo>
+      Отражение ограничений безопасности в интерфейсе, например Organization.Save(Owner=1). Сейчас операции доступны и выдают исключение ObjectLayerSecurityException в DevExpress.Xpo.SessionObjectLayer:502.
+      Изначально планировалось, что безопасность в интерфейсе будет независимой от серверной и реализовываться стандартными средствами, например, DevExpress.ComplexSecurityModule. Требуется концептуальное решение.
+      <br/>Реализовано частично: <see cref="Aurum.Security.SecurityPermissionRequestProcessor"/>. Не работает ограничение записи объекта, так как вызывается проверка операции <b>Write</b> по отдельным полям объекта, а не на весь объект.
+      Не вызывается запрос безопасности на операцию Save в DevExpress.ExpressApp\DevExpress.ExpressApp\SystemModule\ModificationsController:133 <c>ModificationsController.UpdateActionsState</c>. Возможно, ошибка DX в коде:
+      <c>if(SecuritySystem.Instance is IRequestSecurity)</c> вместо <c>if(!(SecuritySystem.Instance is IRequestSecurity))</c>.
+    </todo>
+    <todo><![CDATA[
+    Интерфейс и ошибки при редактировании пользователей БД:
+    + Убрать возможность редактирования id при изменении DatabaseObject (для создания оставить) // Conditional Appearance Rule [DisableId]
+    + Изменение свойств IsActive, IsExpired при создании пользователя
+    + Обновление в интерфейсе Locked после изменения IsActive // Установка пользовательского значения Null/Today
+    + IsActive, IsExpired сохраняются без необходимости и сбрасывается пароль // Получение текущих данных о пользователе перед выполнением команды
+    ]]></todo>
+    <todo>Системные права собственников данных. <br/>Реализовано</todo>
+    <todo>Списки домов, часть из которых недоступна пользователю из-за филиалов. Должны быть полностью недоступны пользователю.
+    Необходима принципиальная формулировка проблемы и решения ее в рамках концепций DevExpress.</todo>
+  </topic>
+  <topic id="security-server" category="security" name="Безопасность на стороне БД">
+    <content>
+      Безопасность на стороне БД строится на объектах БД - ролях <see cref="Aurum.Security.DatabaseRole"/>, пользователях <see cref="Aurum.Security.DatabaseUser"/>
+      и привилегиях <see cref="Aurum.Security.DatabasePrivilege"/>. Все объекты безопасности БД являются &quot;псевдоперсистентными&quot;, т.е. они физически существуют в БД,
+      но не могут быть представлены как обычные данные, с которыми взаимодействует Xpo. (Для их реализации используется недокументированная опция - 
+      настраиваемое управление данными <see cref="Aurum.Xpo.CustomPersistentAttribute"/>.)<br/> 
+      Роли и привилегии пользователя, выполнившего соединение с БД, преобразуются в обычные разрешения <see cref="DevExpress.ExpressApp.Security.IOperationPermission"/> 
+      на операции с объектами бизнес-классов (см. метод <see cref="Aurum.Security.DatabaseUser.GetTypePermissions"/>).
+      Для использования безопасности на стороне БД необходимо для пользователя БД подключить поставщика пространства объектов <see cref="Aurum.Security.AdminObjectSpaceProvider"/>
+      примерно следующим образом.
+      <code>
+        <![CDATA[
+        public partial class MyWindowsFormsApplication : WinApplication
+        {
+            // Создание поставщиков пространства объектов
+            protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args)
+            {
+                args.ObjectSpaceProvider = new ObjectSpaceProvider(args.ConnectionString, args.Connection);
+                args.ObjectSpaceProviders.Add(new AdminObjectSpaceProvider(args.ConnectionString, args.Connection, true));
+            }
+
+            // Создание пространства объектов
+            protected override IObjectSpace CreateObjectSpaceCore(Type objectType)
+            {
+                // Если тип объектов - пользователь БД
+                if (objectType == typeof(DatabaseUser))
+                {
+                    foreach (var provider in ObjectSpaceProviders)
+                        if (provider is AdminObjectSpaceProvider) 
+                            return provider.CreateObjectSpace();
+                }
+                return base.CreateObjectSpaceCore(objectType);
+            }
+        }
+      ]]></code>
+      Вместо <see cref="Aurum.Security.DatabaseUser"/> можно использовать обычный персистентный класс пользователей
+      <see cref="Aurum.Security.ServerUser"/>, который связывается с <see cref="Aurum.Security.DatabaseUser"/> через идентификатор
+      <see cref="Aurum.Security.ServerUser.Id"/>.<br/>
+      <section title="Разделение серверной и стандартной систем безопасности">
+        Разрешения на операции в базе данных возвращаются объектом <see cref="Aurum.Security.DatabaseUser"/>, который поддерживает
+        интерфейс <see cref="DevExpress.ExpressApp.Security.IOperationPermissionProvider"/>. По умолчанию возвращаются разрешения 
+        <see cref="DevExpress.ExpressApp.Security.TypeOperationPermission"/>, которые проверяются стандартным процессором серверных запросов на разрешения
+        <see cref="DevExpress.ExpressApp.Security.ServerPermissionRequestProcessor"/>. Возможна ситуация, когда необходимо использовать одновременно
+        систему безопасности, основанную на привилегиях в базе данных, и стандартную систему безопасности с проверкой на стороне клиента.
+        В этом случае типовые разрешения смешаются и конечному пользователю будут доступны в интерфейсе операции согласно объединению разрешений обоих систем.
+        Чтобы разрешения не смешивались, следует включить режим разрешений базы данных. А вместо стандартного процессора серверных запросов использовать
+        комплексный процессор, включив в него процессор запросов разрешений на операции в базе данных <see cref="Aurum.Security.DatabasePermissionRequestProcessor"/>.
+        <code><![CDATA[
+        private void MyWindowsFormsApplication_LoggingOn(object sender, LogonEventArgs e)
+        {
+            // Режим разрешений базы данных
+            DatabaseUser.PermissionMode = DatabasePermissionModes.Database;
+        }
+        
+        private void securityStrategyComplex1_CustomizeRequestProcessors(object sender, CustomizeRequestProcessorsEventArgs e)
+        {
+            // Комплексный процессор разрешений, включающий стандартный процессор разрешений и процессор привилегий базы данных
+            e.Processors[typeof(ServerPermissionRequest)] = new ComplexPermissionRequestProcessor(
+                e.Processors[typeof(ServerPermissionRequest)],
+                new DatabasePermissionRequestProcessor(e.Permissions));
+        }
+        ]]></code>
+      </section>
+    </content>
+  </topic>
+  <topic id="security-contracts" category="security" name="Безопасность, основанная на контрактах">
+    <content>
+      Безопасность, основанная на контрактах, <see cref="Aurum.Security.ContractDataSecurity"/> - это абстрактная реализация системы безопасности операций с данными с наличием обязательного
+      контекста безопасности <see cref="Aurum.Security.IContractContext"/>, создаваемого при загрузке системы. Класс, который подлежит системе безопасности контрактов должен реализовать 
+      интерфейс <see cref="Aurum.Security.IContractObject"/>. На основе класса <see cref="Aurum.Security.ContractDataSecurity"/> или дочернего класса с типизированным контекстом 
+      <see cref="Aurum.Security.ContractDataSecurity&lt;ContextType&gt;"/> строятся более конкретные системы безопасности.
+      <section title="Безопасность, основанная на контрактах между собственниками данных">
+        <b>Собственником данных</b> <see cref="Aurum.Security.Owner"/> называется организация или физическое лицо, обладающие полными правами на редактирование 
+        объектов бизнес-классов одного или нескольких модулей. Безопасность между собственниками данных предполагает, с одной стороны,
+        защиту этих данных от других собственников, с другой стороны, возможность передачи прав на просмотр и редактирование другим собственникам на указанный период времени.
+        Передача прав на просмотр и редактирование данных определяется договором между собственниками данных <see cref="Aurum.Security.Contract"/>.
+        Права на данные для всех собственников независимо от договоров устанавливаются в свойстве <see cref="Aurum.Security.Owner.Rights"/>.
+        Для принадлежности данных собственнику данных бизнес-класс должен реализовать интерфейс <see cref="Aurum.Security.IOwnedObject"/>.
+        А чтобы объекты бизнес-класса проверялись по этой системе безопасности, бизнес-класс должен реализовать интерфейс <see cref="Aurum.Security.IContractObject&lt;OwnerContext&gt;"/>.
+        Базовым бизнес-классом таких объектов может служить <see cref="Aurum.Security.XPOwnedObject"/>.<br/>
+        Основная реализация этой системы безопасности расположена в классе <see cref="Aurum.Security.OwnerDataSecurity"/>, который, в свою очередь использует
+        справочник договоров <see cref="Aurum.Security.ContractDictionary"/>, загружаемый с контекстом безопасности <see cref="Aurum.Security.OwnerContext"/>.
+        Для случая использования модуля в системе с одним собственником данных есть упрощенная реализация <see cref="Aurum.Security.ExclusiveOwnerDataSecurity"/>.
+      </section>
+    </content>
+    <seealso topic="security-howto-newsystem"/>
+  </topic>
+  <topic id="security-howto-newsystem" category="security-contracts" name="Как создать новую систему безопасности, основанную на контрактах">
+    <content>
+      Допустим, требуется система безопасности, определяющая доступ пользователя к данным на основе принадлежности объекта филиалу организации.
+      Создайте интерфейс, объявляющий принадлежность объекта филиалу организации.
+      <code><![CDATA[
+      // Интерфейс объекта, относящегося к филиалу организации
+      public interface IFilialObject
+      {
+          // Филиал организации, к которому относится объект
+          Filial Filial { get; }
+      }
+      ]]></code>
+      Создайте интерфейс пользователя, на основе которого можно определить контекст безопасности пользователя, выполнившего соединение с БД.
+      <code><![CDATA[
+      // Интерфейс пользователя с доступом к данным филиалов организации
+      public interface IFilialUser
+      {
+          // Флаг доступа пользователя к данным всех филиалов
+          bool AllFilials { get; }
+
+          // Филиалы, к данным которых у пользователя есть доступ
+          IEnumerable<Filial> AccessFilials { get; }
+      }
+      ]]></code>
+      Затем определите контекст системы безопасности, на основе которого будет определяться доступ к данным.
+      <code><![CDATA[
+      // Контекст безопасности данных, относящихся к филиалам организации
+      public class FilialContext : ContractContext
+      {
+          private bool allFilials;
+          private List<Filial> filials;
+
+          // Доступ к данным всех филиалов
+          public bool AllFilials { get { return allFilials; } }
+
+          // Филиалы, к данным которых есть доступ
+          public IEnumerable<Filial> Filials { get { return filials; } }
+
+          // Инициализация контекста
+          public override void Initialize(IObjectSpace objectSpace, object user)
+          {
+              if (user is IFilialUser)
+              {
+                  IFilialUser fuser = (IFilialUser)user;
+                  allFilials = fuser.AllFilials;
+                  filials = new List<Filial>(fuser.AccessFilials);
+              }
+          }
+      }
+      ]]></code>
+      И наконец, реализуйте сам класс системы безопасности и правила безопасности этой системы. 
+      <code><![CDATA[
+      // Система безопасности данных, относящихся к филиалам организации
+      public class FilialDataSecurity : ContractDataSecurity<FilialContext>
+      {
+          private Type IFilialObjectType = typeof(IFilialObject);
+
+          // Проверка прав на доступ к данным
+          public override bool IsGranted(IContractObject<FilialContext> contractObject, 
+              string operation, FilialContext context)
+          {
+              // Если доступны все филиалы
+              if (context.AllFilials) return true;
+              
+              // Если объект имеет принадлежность к филиалу
+              if (contractObject is IFilialObject)
+              {
+                  Filial filial = ((IFilialObject)contractObject).Filial;
+                  return context.Filials != null && filial != null && context.Filials.Contains(filial);
+              }
+              return true;
+          }
+
+          // Проверка прав на доступ к свойству данных
+          public override bool IsGranted(IContractObject<FilialContext> contractObject, 
+              string operation, string memberName, FilialContext context)
+          {
+              return true;
+          }
+
+          // Возвращает список условий для запроса данных из БД
+          public override IList<string> GetObjectCriteria(Type type, FilialContext context)
+          {
+              // Если доступны все филиалы, условий не требуется
+              if (context.AllFilials) return new string[0];
+              
+              // Бизнес-класс имеет свойство, определяющее принадлежность к филиалу
+              if (IFilialObjectType.IsAssignableFrom(type))
+              {
+                  List<Filial> filials = new List<Filial>();
+                  if (context.Filials != null) filials.AddRange(context.Filials);
+                  string result;
+                  if (filials == null || filials.Count == 0) result = "Filial = -1";
+                  else if (filials.Count == 1) result = "Filial = " + filials[0].Id.ToString();
+                  else result = "Filial in (" + string.Join(", ", filials.Select(filial => filial.Id)) + ")";
+                  return new string[] { result };
+              }
+              return new string[0];
+          }
+      }
+      ]]></code>
+      Сами бизнес-классы для участия в этой системе безопасности должны наследовать два интерфейса: <c>IFilialObject</c> и <c>IContractObject&lt;FilialContext&gt;</c>.
+    </content>
+    <seealso topic="security-contracts"/>
+  </topic>
+</t:topics>

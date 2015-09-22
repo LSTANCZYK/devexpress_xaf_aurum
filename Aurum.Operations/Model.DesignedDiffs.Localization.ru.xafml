@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="35b24070-4bb8-4240-835d-219ad1888ce7" Caption="Отменить" ToolTip="Послать запрос на отмену операции" />
+      <Action Id="HideAction" Caption="Скрыть" ToolTip="Скрыть данное окно, оставив операцию выполняться дальше" />
+      <Action Id="ShowOperationsAction" Caption="Показать операции" ShortCaption="Показать список операций" ToolTip="Показать список всех операций" />
+    </Actions>
+  </ActionDesign>
+  <BOModel>
+    <Class Name="Aurum.Operations.LogItemObject" Caption="Запись">
+      <OwnMembers>
+        <Member Name="Index" Caption="Индекс" />
+        <Member Name="Message" Caption="Сообщение" />
+        <Member Name="OperationId" Caption="Операция" />
+        <Member Name="Time" Caption="Время" />
+        <Member Name="Type" Caption="Тип" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Operations.OperationObject" Caption="Операция">
+      <OwnMembers>
+        <Member Name="Added" Caption="Добавлена" />
+        <Member Name="Children" Caption="Дочерние операции" />
+        <Member Name="Ended" Caption="Закончена" />
+        <Member Name="Items" Caption="Журнал" />
+        <Member Name="OperationId" Caption="Идентификатор операции" />
+        <Member Name="Parent" Caption="Родительская операция" />
+        <Member Name="Progress" Caption="Прогресс" />
+        <Member Name="Started" Caption="Начата" />
+        <Member Name="Status" Caption="Статус" />
+        <Member Name="StatusText" Caption="Текст статуса" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Aurum.Operations.OperationObjects" Caption="Операции" />
+  </BOModel>
+  <Localization>
+    <LocalizationGroup Name="Captions">
+      <LocalizationItem Name="ExceptionText" Value="Текст ошибки: {0}" />
+      <LocalizationItem Name="Operation" Value="Операция" />
+      <LocalizationItem Name="StatusText" Value="Статус: {0}" />
+      <LocalizationItem Name="UnnamedOperation" Value="Безымянная операция" />
+    </LocalizationGroup>
+    <LocalizationGroup Name="Enums">
+      <LocalizationGroup Name="Aurum.Operations.LogItemType">
+        <LocalizationItem Name="Error" Value="Ошибка" />
+        <LocalizationItem Name="Info" Value="Информация" />
+        <LocalizationItem Name="Status" Value="Смена статуса" />
+        <LocalizationItem Name="Warning" Value="Предупреждение" />
+      </LocalizationGroup>
+      <LocalizationGroup Name="Aurum.Operations.OperationStatus">
+        <LocalizationItem Name="Canceled" Value="Отменена" />
+        <LocalizationItem Name="Created" Value="Добавлена на исполнение" />
+        <LocalizationItem Name="Faulted" Value="Прервана из-за ошибки" />
+        <LocalizationItem Name="RanToCompletion" Value="Завершена" />
+        <LocalizationItem Name="Running" Value="Выполняется" />
+      </LocalizationGroup>
+    </LocalizationGroup>
+  </Localization>
+  <Views>
+    <DetailView Id="OperationObject_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="OperationObject" Caption="Operation Object" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="Items" Caption="Журнал" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="OperationObject_DetailView_(Composite)">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="OperationObject" Caption="Operation Object" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="OperationObject_Items_ListView">
+      <Columns>
+        <ColumnInfo Id="OperationId" Caption="Операция" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

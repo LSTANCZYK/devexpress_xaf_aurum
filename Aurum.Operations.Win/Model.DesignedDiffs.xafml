@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="14.1.8.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="14.1.4.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <ListView Id="OperationObject_Children_ListView">
+      <Columns>
+        <ColumnInfo Id="Progress" PropertyEditorType="Aurum.Operations.Win.Editors.PercentageProgressEditor" />
+      </Columns>
+    </ListView>
+    <DetailView Id="OperationObject_DetailView">
+      <Items>
+        <PropertyEditor Id="Progress" PropertyEditorType="Aurum.Operations.Win.Editors.PercentageProgressEditor" />
+      </Items>
+    </DetailView>
+    <DetailView Id="OperationObject_DetailView_(Composite)">
+      <Items>
+        <PropertyEditor Id="Progress" PropertyEditorType="Aurum.Operations.Win.Editors.PercentageProgressEditor" />
+      </Items>
+    </DetailView>
+    <ListView Id="OperationObjects_Objects_ListView">
+      <Columns>
+        <ColumnInfo Id="Progress" PropertyEditorType="Aurum.Operations.Win.Editors.PercentageProgressEditor" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

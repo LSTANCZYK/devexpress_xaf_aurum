@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <ActionDesign>
+    <Actions>
+      <Action Id="CancelAllOperationAction" Caption="Отменить все" ShortCaption="Отменить все операции" ToolTip="Отменить все выполняющиеся в данный момент операции" />
+      <Action Id="CancelOperationAction" ToolTip="Послать запрос на отмену операции. Данное действие не гарантирует отмену операции" ShortCaption="Отменить операцию" Caption="Отменить" />
+      <Action Id="ExportsSingleChoiceAction" Caption="Экспорты" ShortCaption="Список экспортов" ToolTip="Список доступных экспортов" />
+      <Action Id="ValidateExchangeParametersAction" Caption="Проверить" ShortCaption="Проверить параметры" ToolTip="Проверить параметры на корректность" />
+    </Actions>
+  </ActionDesign>
+</Application>
